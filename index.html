@@ -701,70 +701,72 @@
     </section>
 
     <!-- Results Section -->
-    <section class="section results-section" id="results">
-        <div class="container">
-            <div class="section-title">
-                <h2>Student Results</h2>
-                <div class="divider"></div>
-            </div>
-            
-            <div class="result-container">
-                <div class="result-form">
-                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Check Your Result</h3>
-                    <p style="margin-bottom: 1.5rem; color: var(--gray);">Enter your details to view your examination results.</p>
-                    
-                    <div class="form-group">
-                        <label for="exam">Select Examination</label>
-                        <select id="exam" class="form-control">
-                            <option value="">-- Select Exam --</option>
-                            <option value="midterm">Mid-Term Examination 2023</option>
-                            <option value="annual">Annual Examination 2023</option>
-                        </select>
+    <!-- Updated Results Section -->
+<section class="section results-section" id="results">
+    <div class="container">
+        <div class="section-title">
+            <h2>Student Results</h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-form">
+                <!-- MOVED RESULT DISPLAY ABOVE THE FORM -->
+                <div class="result-display" id="resultDisplay" style="display: none; margin-bottom: 2rem;">
+                    <div class="student-info">
+                        <h3 id="studentName"></h3>
+                        <p>Roll No: <strong id="displayRollNo"></strong> | Class: <strong id="studentClass"></strong></p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="rollno">Enter Roll Number</label>
-                        <input type="text" id="rollno" class="form-control" placeholder="e.g. SPS2023001">
-                    </div>
+                    <table class="result-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Obtained</th>
+                                <th>Max</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultTableBody">
+                            <!-- Results will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
                     
-                    <button class="btn" onclick="checkResult()" style="width: 100%;">
-                        <i class="fas fa-search" style="margin-right: 0.5rem;"></i> Check Result
-                    </button>
-                    
-                    <div class="result-display" id="resultDisplay">
-                        <div class="student-info">
-                            <h3 id="studentName"></h3>
-                            <p>Roll No: <strong id="displayRollNo"></strong> | Class: <strong id="studentClass"></strong></p>
-                        </div>
-                        
-                        <table class="result-table">
-                            <thead>
-                                <tr>
-                                    <th>Subject</th>
-                                    <th>Obtained</th>
-                                    <th>Max</th>
-                                    <th>Grade</th>
-                                </tr>
-                            </thead>
-                            <tbody id="resultTableBody">
-                                <!-- Results will be inserted here by JavaScript -->
-                            </tbody>
-                        </table>
-                        
-                        <div class="result-summary">
-                            <p>Total Marks: <strong id="totalMarks"></strong></p>
-                            <p>Percentage: <span class="percentage" id="percentage"></span></p>
-                            <p>Overall Grade: <span class="grade" id="overallGrade"></span></p>
-                        </div>
+                    <div class="result-summary">
+                        <p>Total Marks: <strong id="totalMarks"></strong></p>
+                        <p>Percentage: <span class="percentage" id="percentage"></span></p>
+                        <p>Overall Grade: <span class="grade" id="overallGrade"></span></p>
                     </div>
                 </div>
                 
-                <div class="result-image">
-                    <img src="4.jpg" alt="Students studying">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Check Your Result</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--gray);">Enter your details to view your examination results.</p>
+                
+                <div class="form-group">
+                    <label for="exam">Select Examination</label>
+                    <select id="exam" class="form-control">
+                        <option value="">-- Select Exam --</option>
+                        <option value="midterm">Mid-Term Examination 2023</option>
+                        <option value="annual">Annual Examination 2023</option>
+                    </select>
                 </div>
+                
+                <div class="form-group">
+                    <label for="rollno">Enter Roll Number</label>
+                    <input type="text" id="rollno" class="form-control" placeholder="e.g. SPS2023001">
+                </div>
+                
+                <button class="btn" onclick="checkResult()" style="width: 100%;">
+                    <i class="fas fa-search" style="margin-right: 0.5rem;"></i> Check Result
+                </button>
+            </div>
+            
+            <div class="result-image">
+                <img src="4.jpg" alt="Students studying">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section class="section contact-section" id="contact">
@@ -928,7 +930,7 @@
         // Sample student data - in real implementation this would come from a database
         const studentDatabase = {
             "SPS2023001": {
-                name: "Rahul Sharma",
+                name: "Anum Nazeer",
                 class: "10th A",
                 midterm: {
                     english: { obtained: 85, max: 100 },
@@ -946,7 +948,7 @@
                 }
             },
             "SPS2023002": {
-                name: "Priya Patel",
+                name: "Komal Fatima",
                 class: "10th B",
                 midterm: {
                     english: { obtained: 92, max: 100 },
@@ -964,7 +966,7 @@
                 }
             },
             "SPS2023003": {
-                name: "Amit Kumar",
+                name: "Hira Ali",
                 class: "9th A",
                 midterm: {
                     english: { obtained: 75, max: 100 },
