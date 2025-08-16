@@ -3,137 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunshine Public School</title>
+    <title>Sunshine Public School | Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4a6bff;
-            --secondary: #ff7e33;
-            --light: #f8f9fa;
-            --dark: #343a40;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --success: #10b981;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f1f5f9;
+            color: var(--dark);
             line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
         
-        nav {
-            background-color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin: 0 15px;
-        }
-        
-        nav ul li a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
-        nav ul li a:hover {
-            background-color: var(--primary);
-            color: white;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .hero {
-            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 400px;
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
+            gap: 0.75rem;
         }
         
-        .hero::before {
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
         }
         
         .hero-content {
-            position: relative;
-            z-index: 1;
             max-width: 800px;
-            padding: 0 20px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
         
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+        
+        /* Section Styles */
         .section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
         
-        .about-school {
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Results Section */
+        .results-section {
             background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
+        }
+        
+        .result-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .result-image {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .result-form {
             background-color: white;
-            max-width: 600px;
-            margin: 0 auto;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .form-group {
@@ -144,206 +296,635 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            color: var(--dark);
         }
         
-        .form-group input, .form-group select {
+        .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
             font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: #3a5aef;
-            transform: translateY(-2px);
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         .result-display {
             display: none;
             background-color: white;
-            max-width: 800px;
-            margin: 2rem auto;
+            margin-top: 2rem;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .student-info {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .student-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
         
         .result-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1.5rem;
-        }
-        
-        .result-table th, .result-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            margin: 1.5rem 0;
         }
         
         .result-table th {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .result-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .result-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .result-summary {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .result-summary p {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .percentage {
+            font-size: 1.25rem;
+            color: var(--primary);
             font-weight: 600;
         }
         
+        .grade {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--success);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #f8fafc;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .contact-card h3 i {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .footer-logo img {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links ul li a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 0.5rem;
+        }
+        
+        .footer-bottom {
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .about-content,
+            .result-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image,
+            .result-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-dark);
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.5s ease;
             }
             
-            nav ul li {
-                margin: 5px 0;
+            nav ul.active {
+                left: 0;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">Sunshine Public School</div>
-            <p>Empowering students since 1995</p>
-        </div>
-    </header>
-    
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#results">Check Results</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Quality Education for Bright Future</h1>
-            <p>Admissions open for 2023-24 session</p>
-        </div>
-    </section>
-    
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">About Our School</h2>
-            <div class="about-school">
-                <p>Established in 1995, Sunshine Public School has been providing quality education to students in a nurturing environment. Our mission is to develop well-rounded, confident and responsible individuals who aspire to achieve their full potential.</p>
-                
-                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">School Facilities:</h3>
-                <ul style="margin-left: 2rem;">
-                    <li>Smart classrooms with digital boards</li>
-                    <li>Well-equipped science and computer labs</li>
-                    <li>Library with 10,000+ books</li>
-                    <li>Sports facilities including basketball court and swimming pool</li>
-                    <li>Music and art rooms</li>
-                    <li>Safe and secure campus with CCTV surveillance</li>
-                </ul>
-                
-                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Academic Calendar:</h3>
-                <p>We conduct two major examinations each year:</p>
-                <ol style="margin-left: 2rem;">
-                    <li>Mid-Term Examination (July)</li>
-                    <li>Annual Examination (December)</li>
-                </ol>
-                <p>Results are typically published within 30 days after each examination.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" id="results" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">Check Student Result</h2>
-            <div class="result-form">
-                <div class="form-group">
-                    <label for="exam">Select Examination</label>
-                    <select id="exam">
-                        <option value="">-- Select Exam --</option>
-                        <option value="midterm">Mid-Term Exam 2023</option>
-                        <option value="annual">Annual Exam 2023</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="rollno">Enter Roll Number</label>
-                    <input type="text" id="rollno" placeholder="e.g. SPS2023001">
-                </div>
-                
-                <button class="btn" onclick="checkResult()">Check Result</button>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="Sunshine Public School Logo" class="logo-img">
+                <span class="logo-text">Sunshine Public School</span>
             </div>
             
-            <div class="result-display" id="resultDisplay">
-                <h3 style="color: var(--primary); margin-bottom: 1rem;">Result for: <span id="studentName"></span></h3>
-                <p>Roll No: <span id="displayRollNo"></span> | Class: <span id="studentClass"></span></p>
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Excellence in Education Since 1995</h1>
+            <p>Nurturing young minds to become responsible global citizens through quality education and holistic development.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#results" class="btn">Check Results</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our School</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sunshine Public School">
+                </div>
                 
-                <table class="result-table">
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Marks Obtained</th>
-                            <th>Maximum Marks</th>
-                            <th>Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultTableBody">
-                        <!-- Results will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
-                
-                <div style="margin-top: 1.5rem; font-weight: 500;">
-                    <p>Total Marks: <span id="totalMarks"></span></p>
-                    <p>Percentage: <span id="percentage"></span>%</p>
-                    <p>Overall Grade: <span id="overallGrade"></span></p>
+                <div class="about-text">
+                    <h3>Welcome to Sunshine Public School</h3>
+                    <p>Established in 1995, Sunshine Public School has been a beacon of quality education in our community. Our mission is to provide a nurturing environment that fosters academic excellence, character development, and lifelong learning.</p>
+                    <p>With state-of-the-art facilities and a dedicated faculty, we prepare students to meet the challenges of an ever-changing world while maintaining strong moral values and social responsibility.</p>
+                    
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div>
+                                <h4>Modern Labs</h4>
+                                <p>Well-equipped science and computer laboratories</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div>
+                                <h4>Extensive Library</h4>
+                                <p>10,000+ books and digital resources</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div>
+                                <h4>Sports Facilities</h4>
+                                <p>Basketball, swimming, and more</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div>
+                                <h4>Arts Programs</h4>
+                                <p>Music, dance, and visual arts</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section class="section" id="contact">
+
+    <!-- Results Section -->
+    <section class="section results-section" id="results">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p><strong>Address:</strong> 123 Education Street, Knowledge City, 123456</p>
-                <p><strong>Phone:</strong> +91 9876543210</p>
-                <p><strong>Email:</strong> info@sunshinepublicschool.edu</p>
-                <p><strong>Office Hours:</strong> Monday-Friday, 8:00 AM - 3:00 PM</p>
+            <div class="section-title">
+                <h2>Student Results</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="result-container">
+                <div class="result-form">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Check Your Result</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--gray);">Enter your details to view your examination results.</p>
+                    
+                    <div class="form-group">
+                        <label for="exam">Select Examination</label>
+                        <select id="exam" class="form-control">
+                            <option value="">-- Select Exam --</option>
+                            <option value="midterm">Mid-Term Examination 2023</option>
+                            <option value="annual">Annual Examination 2023</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rollno">Enter Roll Number</label>
+                        <input type="text" id="rollno" class="form-control" placeholder="e.g. SPS2023001">
+                    </div>
+                    
+                    <button class="btn" onclick="checkResult()" style="width: 100%;">
+                        <i class="fas fa-search" style="margin-right: 0.5rem;"></i> Check Result
+                    </button>
+                    
+                    <div class="result-display" id="resultDisplay">
+                        <div class="student-info">
+                            <h3 id="studentName"></h3>
+                            <p>Roll No: <strong id="displayRollNo"></strong> | Class: <strong id="studentClass"></strong></p>
+                        </div>
+                        
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Obtained</th>
+                                    <th>Max</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultTableBody">
+                                <!-- Results will be inserted here by JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="result-summary">
+                            <p>Total Marks: <strong id="totalMarks"></strong></p>
+                            <p>Percentage: <span class="percentage" id="percentage"></span></p>
+                            <p>Overall Grade: <span class="grade" id="overallGrade"></span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-image">
+                    <img src="https://images.unsplash.com/photo-1588072432904-843af37f03ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Students studying">
+                </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                        <p>Street # 2, Samijabad City, Multan, Pakistan</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-phone-alt"></i> Phone Numbers</h3>
+                        <p>+92 300 1234567 (Principal)</p>
+                        <p>+92 300 7654321 (Office)</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>info@sunshine.edu.pk</p>
+                        <p>admissions@sunshine.edu.pk</p>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn" style="width: 100%;">
+                                <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Sunshine Public School. All Rights Reserved.</p>
-            <p style="margin-top: 1rem;">Designed with ❤️ for quality education</p>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/30" alt="Sunshine Public School Logo">
+                        <span>Sunshine Public School</span>
+                    </div>
+                    <p>Providing quality education since 1995, nurturing young minds to become responsible global citizens.</p>
+                    <p>&copy; 2023 Sunshine Public School. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Academics</h3>
+                    <ul>
+                        <li><a href="#">Curriculum</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">School Hours</a></li>
+                        <li><a href="#">Examinations</a></li>
+                        <li><a href="#">School Policies</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Important</h3>
+                    <ul>
+                        <li><a href="#">School Fees</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Uniform</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for quality education</p>
+            </div>
         </div>
     </footer>
-    
+
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
         // Sample student data - in real implementation this would come from a database
         const studentDatabase = {
             "SPS2023001": {
@@ -464,7 +1045,7 @@
             document.getElementById('percentage').textContent = percentage;
             document.getElementById('overallGrade').textContent = overallGrade;
             
-            // Show the result display
+            // Show the result display with animation
             resultDisplay.style.display = 'block';
         }
         
@@ -477,6 +1058,36 @@
             if (percentage >= 40) return 'D';
             return 'E';
         }
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just log it and show an alert
+            console.log({ name, email, subject, message });
+            
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
     </script>
 </body>
 </html>
