@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine Public School</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --secondary: #ff7e33;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+        
+        .about-school {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        .result-form {
+            background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3a5aef;
+            transform: translateY(-2px);
+        }
+        
+        .result-display {
+            display: none;
+            background-color: white;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        
+        .result-table th, .result-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .result-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Sunshine Public School</div>
+            <p>Empowering students since 1995</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#results">Check Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Quality Education for Bright Future</h1>
+            <p>Admissions open for 2023-24 session</p>
+        </div>
+    </section>
+    
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Our School</h2>
+            <div class="about-school">
+                <p>Established in 1995, Sunshine Public School has been providing quality education to students in a nurturing environment. Our mission is to develop well-rounded, confident and responsible individuals who aspire to achieve their full potential.</p>
+                
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">School Facilities:</h3>
+                <ul style="margin-left: 2rem;">
+                    <li>Smart classrooms with digital boards</li>
+                    <li>Well-equipped science and computer labs</li>
+                    <li>Library with 10,000+ books</li>
+                    <li>Sports facilities including basketball court and swimming pool</li>
+                    <li>Music and art rooms</li>
+                    <li>Safe and secure campus with CCTV surveillance</li>
+                </ul>
+                
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Academic Calendar:</h3>
+                <p>We conduct two major examinations each year:</p>
+                <ol style="margin-left: 2rem;">
+                    <li>Mid-Term Examination (July)</li>
+                    <li>Annual Examination (December)</li>
+                </ol>
+                <p>Results are typically published within 30 days after each examination.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="results" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Check Student Result</h2>
+            <div class="result-form">
+                <div class="form-group">
+                    <label for="exam">Select Examination</label>
+                    <select id="exam">
+                        <option value="">-- Select Exam --</option>
+                        <option value="midterm">Mid-Term Exam 2023</option>
+                        <option value="annual">Annual Exam 2023</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rollno">Enter Roll Number</label>
+                    <input type="text" id="rollno" placeholder="e.g. SPS2023001">
+                </div>
+                
+                <button class="btn" onclick="checkResult()">Check Result</button>
+            </div>
+            
+            <div class="result-display" id="resultDisplay">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Result for: <span id="studentName"></span></h3>
+                <p>Roll No: <span id="displayRollNo"></span> | Class: <span id="studentClass"></span></p>
+                
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Marks Obtained</th>
+                            <th>Maximum Marks</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultTableBody">
+                        <!-- Results will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 1.5rem; font-weight: 500;">
+                    <p>Total Marks: <span id="totalMarks"></span></p>
+                    <p>Percentage: <span id="percentage"></span>%</p>
+                    <p>Overall Grade: <span id="overallGrade"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p><strong>Address:</strong> 123 Education Street, Knowledge City, 123456</p>
+                <p><strong>Phone:</strong> +91 9876543210</p>
+                <p><strong>Email:</strong> info@sunshinepublicschool.edu</p>
+                <p><strong>Office Hours:</strong> Monday-Friday, 8:00 AM - 3:00 PM</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sunshine Public School. All Rights Reserved.</p>
+            <p style="margin-top: 1rem;">Designed with ❤️ for quality education</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Sample student data - in real implementation this would come from a database
+        const studentDatabase = {
+            "SPS2023001": {
+                name: "Rahul Sharma",
+                class: "10th A",
+                midterm: {
+                    english: { obtained: 85, max: 100 },
+                    hindi: { obtained: 78, max: 100 },
+                    maths: { obtained: 92, max: 100 },
+                    science: { obtained: 88, max: 100 },
+                    social: { obtained: 81, max: 100 }
+                },
+                annual: {
+                    english: { obtained: 89, max: 100 },
+                    hindi: { obtained: 82, max: 100 },
+                    maths: { obtained: 95, max: 100 },
+                    science: { obtained: 91, max: 100 },
+                    social: { obtained: 87, max: 100 }
+                }
+            },
+            "SPS2023002": {
+                name: "Priya Patel",
+                class: "10th B",
+                midterm: {
+                    english: { obtained: 92, max: 100 },
+                    hindi: { obtained: 85, max: 100 },
+                    maths: { obtained: 89, max: 100 },
+                    science: { obtained: 94, max: 100 },
+                    social: { obtained: 88, max: 100 }
+                },
+                annual: {
+                    english: { obtained: 95, max: 100 },
+                    hindi: { obtained: 89, max: 100 },
+                    maths: { obtained: 92, max: 100 },
+                    science: { obtained: 97, max: 100 },
+                    social: { obtained: 91, max: 100 }
+                }
+            },
+            "SPS2023003": {
+                name: "Amit Kumar",
+                class: "9th A",
+                midterm: {
+                    english: { obtained: 75, max: 100 },
+                    hindi: { obtained: 72, max: 100 },
+                    maths: { obtained: 85, max: 100 },
+                    science: { obtained: 80, max: 100 },
+                    social: { obtained: 78, max: 100 }
+                },
+                annual: {
+                    english: { obtained: 82, max: 100 },
+                    hindi: { obtained: 78, max: 100 },
+                    maths: { obtained: 88, max: 100 },
+                    science: { obtained: 85, max: 100 },
+                    social: { obtained: 80, max: 100 }
+                }
+            }
+        };
+        
+        function checkResult() {
+            const exam = document.getElementById('exam').value;
+            const rollNo = document.getElementById('rollno').value.trim();
+            const resultDisplay = document.getElementById('resultDisplay');
+            
+            if (!exam) {
+                alert('Please select an examination');
+                return;
+            }
+            
+            if (!rollNo) {
+                alert('Please enter roll number');
+                return;
+            }
+            
+            const student = studentDatabase[rollNo];
+            
+            if (!student) {
+                alert('Student not found. Please check roll number and try again.');
+                return;
+            }
+            
+            // Display student info
+            document.getElementById('studentName').textContent = student.name;
+            document.getElementById('displayRollNo').textContent = rollNo;
+            document.getElementById('studentClass').textContent = student.class;
+            
+            // Get the selected exam results
+            const examResults = student[exam];
+            
+            // Populate the result table
+            const tableBody = document.getElementById('resultTableBody');
+            tableBody.innerHTML = '';
+            
+            let totalObtained = 0;
+            let totalMax = 0;
+            
+            for (const subject in examResults) {
+                const marks = examResults[subject];
+                totalObtained += marks.obtained;
+                totalMax += marks.max;
+                
+                const grade = calculateGrade(marks.obtained / marks.max * 100);
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${subject.charAt(0).toUpperCase() + subject.slice(1)}</td>
+                    <td>${marks.obtained}</td>
+                    <td>${marks.max}</td>
+                    <td>${grade}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+            
+            // Calculate and display totals
+            const percentage = (totalObtained / totalMax * 100).toFixed(2);
+            const overallGrade = calculateGrade(percentage);
+            
+            document.getElementById('totalMarks').textContent = `${totalObtained}/${totalMax}`;
+            document.getElementById('percentage').textContent = percentage;
+            document.getElementById('overallGrade').textContent = overallGrade;
+            
+            // Show the result display
+            resultDisplay.style.display = 'block';
+        }
+        
+        function calculateGrade(percentage) {
+            if (percentage >= 90) return 'A+';
+            if (percentage >= 80) return 'A';
+            if (percentage >= 70) return 'B+';
+            if (percentage >= 60) return 'B';
+            if (percentage >= 50) return 'C';
+            if (percentage >= 40) return 'D';
+            return 'E';
+        }
+    </script>
+</body>
+</html>
